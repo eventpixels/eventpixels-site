@@ -914,8 +914,10 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         document.getElementById("formWrap").hidden = true;
         document.getElementById("done").hidden = false;
       })
-      .catch(function(){
-        err.textContent = "That didn't send. Please email info@eventpixels.co.uk or message us on WhatsApp, and we'll reply today.";
+      .catch(function(e){
+        err.textContent = /activat/i.test(e && e.message || "")
+          ? "The form is waiting to be switched on. Please message us on WhatsApp or email info@eventpixels.co.uk for now, and we'll reply today."
+          : "That didn't send. Please email info@eventpixels.co.uk or message us on WhatsApp, and we'll reply today.";
         err.hidden = false;
         btn.disabled = false; btn.textContent = "Send my date";
       });
