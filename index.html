@@ -105,7 +105,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .hero .note{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--soft)}
 .hero .note i{width:8px;height:8px;border-radius:2px;background:var(--amber)}
 .frame{position:relative;margin:0}
-.frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:var(--r-xl)}
+.frame img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:var(--r-xl)}
 .frame .pc{position:absolute;display:grid;grid-template-columns:repeat(2,22px);gap:6px}
 .frame .pc i{width:22px;height:22px;border-radius:20%}
 .frame .pc.tl{top:-14px;left:-14px}.frame .pc.br{bottom:-14px;right:-14px}
@@ -119,7 +119,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .fact .tile{width:44px;height:44px;border-radius:11px}
 .fact .tile .ic{width:22px;height:22px}
 .fact b{display:block;font-size:.98rem;letter-spacing:-.01em}
-.fact span{font-size:.86rem;color:var(--soft)}
+.fact span{display:block;font-size:.86rem;line-height:1.4;color:var(--soft)}
 .hero .pgrid{display:none}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.frame{max-width:520px}.frame img{aspect-ratio:4/4.2}.spec{left:16px}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .pgrid{display:none}}
 @media (max-width:480px){.facts{grid-template-columns:1fr}.fact{padding:16px 0}}
@@ -191,7 +191,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .addon-list{display:flex;flex-wrap:wrap;gap:8px}
 .addon{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:var(--accent-soft);color:var(--purple);font-size:.88rem;font-weight:600}
 .addon i{width:8px;height:8px;border-radius:2px;background:var(--purple)}
-.packs-note{margin-top:20px;color:var(--ink2);font-size:.95rem;display:flex;gap:10px;align-items:center}
+.packs-note{margin-top:20px;color:var(--ink2);font-size:.95rem;display:flex;gap:10px;align-items:baseline}
 .packs-note i{width:8px;height:8px;border-radius:2px;background:var(--amber);flex:none}
 @media (max-width:900px){.packs{grid-template-columns:repeat(2,minmax(0,1fr))}.addons{grid-template-columns:1fr}}
 @media (max-width:580px){.packs{grid-template-columns:1fr}}
@@ -336,6 +336,86 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
 .legal{margin-top:40px;padding-top:22px;border-top:1px solid var(--line-p);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;font-size:.82rem}
 @media (max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}}
 
+
+/* ===== Mobile menu ===== */
+.menu-btn{display:none;width:46px;height:46px;border-radius:10px;border:0;background:var(--v16);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.menu-btn span{display:block;width:20px;height:2px;border-radius:2px;background:var(--white);transition:transform .2s,opacity .2s}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(3.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){transform:translateY(-3.5px) rotate(-45deg)}
+.mnav{position:absolute;left:0;right:0;top:100%;background:var(--deep);border-bottom:1px solid var(--line-p);box-shadow:0 18px 40px rgba(20,4,36,.45);padding:8px max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px));max-height:calc(100vh - 70px);overflow-y:auto}
+.mnav a.ml{display:flex;align-items:center;justify-content:space-between;padding:16px 2px;border-bottom:1px solid var(--line-p);font-weight:700;font-size:1.08rem;text-decoration:none;color:var(--white)}
+.mnav a.ml::after{content:"";width:8px;height:8px;border-radius:2px;background:var(--violet);opacity:.6}
+.mnav .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.mnav .btns .btn{min-height:48px;padding:0 12px}
+.swipe{display:none}
+
+@media (max-width:900px){
+  .menu-btn{display:inline-flex}
+  .nav>.btn{display:none}
+  .band{padding-block:clamp(52px,12vw,72px)}
+  .head{margin-bottom:28px;gap:14px}
+  .lede{font-size:1.04rem}
+}
+@media (max-width:700px){
+  h1{font-size:clamp(2.7rem,13vw,3.4rem)}
+  h2{font-size:clamp(1.85rem,8.4vw,2.3rem)}
+  /* Hero: shorter landscape crop, compact spec card */
+  .hero{padding-top:32px}
+  .hero .lede{font-size:1.05rem;margin-top:16px}
+  .hero .btn-row{margin-top:24px}
+  .hero-grid{gap:30px}
+  .frame{max-width:none}
+  .frame img{aspect-ratio:4/3;object-position:50% 16%;border-radius:20px}
+  .frame .pc{grid-template-columns:repeat(2,14px);gap:4px}
+  .frame .pc i{width:14px;height:14px}
+  .frame .pc.tl{top:-8px;left:-8px}.frame .pc.br{bottom:-8px;right:-8px}
+  .spec{left:auto;right:12px;bottom:12px;padding:9px 12px;max-width:150px;font-size:.7rem;line-height:1.3;box-shadow:0 8px 20px rgba(42,8,71,.35)}
+  .spec span{display:block;line-height:1.25}
+  .spec b{font-size:1.35rem}
+  .spec span{font-size:.6rem}
+  /* Facts: 2 x 2, icon above text */
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px;margin-top:36px}
+  .fact{flex-direction:column;align-items:flex-start;gap:10px;padding:20px 0 18px}
+  .fact .tile{width:38px;height:38px}
+  .fact b{font-size:.92rem}
+  .fact span{font-size:.8rem}
+  .strip .wrap{font-size:.92rem}
+  /* Pillars: tighter cards */
+  .pillar{padding:22px 20px 24px;gap:10px}
+  .pillar .tile{width:50px;height:50px;border-radius:13px}
+  .pillar h3{font-size:1.3rem}
+  .glyph{top:22px;right:20px}
+  .included{padding:22px 20px}
+  /* Swipeable rows: packages and audiences */
+  .swipe{display:flex;align-items:center;gap:8px;margin:-12px 0 14px;font-size:.84rem;font-weight:600;color:var(--ink2)}
+  .band:not(.light):not(.paper) .swipe{color:var(--soft)}
+  .swipe i{width:8px;height:8px;border-radius:2px;background:var(--violet)}
+  .packs,.sectors{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-20px;padding:4px 20px 12px;scroll-padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .packs::-webkit-scrollbar,.sectors::-webkit-scrollbar{display:none}
+  .pack,.sector{flex:0 0 84%;scroll-snap-align:start}
+  .addons{padding:20px}
+  /* Brand line */
+  .brandline .trio{gap:28px}
+  /* Filmed */
+  .film ul{gap:10px}
+  .reel{gap:8px}
+  /* Steps: number left, text right */
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps li{display:grid;grid-template-columns:40px 1fr;column-gap:16px;row-gap:4px;padding:16px 0;border-bottom:1px solid var(--rule)}
+  .steps li:last-child{border-bottom:0}
+  .steps .n{grid-row:span 2;margin:0}
+  .steps .rule{display:none}
+  /* Ramadan */
+  .wk{padding:16px}
+  .wk b{font-size:1.65rem}
+  /* FAQ */
+  .faq summary{padding:18px 40px 18px 0;font-size:1rem}
+  /* Enquiry */
+  .form-card{border-radius:20px;padding:22px 18px}
+  .contact{gap:14px}
+  .foot .tagline{font-size:1.35rem}
+}
+
 /* Sticky mobile bar */
 .sticky-cta{display:none}
 @media (max-width:900px){
@@ -384,7 +464,17 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-primary" href="#check-your-date">Check your date</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span></button>
   </div>
+  <nav class="mnav" id="mnav" aria-label="Menu" hidden>
+    <a class="ml" href="#what-we-do">What we do</a>
+    <a class="ml" href="#packages">Packages</a>
+    <a class="ml" href="#ramadan">Ramadan 2027</a>
+    <a class="ml" href="#who-we-work-with">Who we work with</a>
+    <a class="ml" href="#how-it-works">How it works</a>
+    <a class="ml" href="#faq">FAQ</a>
+    <div class="btns"><a class="btn btn-primary" href="#check-your-date">Check a date</a><a class="btn btn-outline wa-link" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></div>
+  </nav>
 </header>
 
 <main id="top">
@@ -484,6 +574,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       </div>
       <p class="lede">Every package includes delivery, setup, someone operating it throughout and pack-down. Pick the one closest to your event and we'll send the full price the same day.</p>
     </div>
+    <p class="swipe" aria-hidden="true"><i></i>Swipe to see all six packages</p>
     <div class="packs">
       <article class="pack featured">
         <div class="kit"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-sound"/></svg></span><span class="plus" aria-hidden="true">+</span><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-screens"/></svg></span></div>
@@ -635,6 +726,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       </div>
       <p class="lede">Most of our diary is charities, masjids, families and schools.</p>
     </div>
+    <p class="swipe" aria-hidden="true"><i></i>Swipe to see who we work with</p>
     <div class="sectors">
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-hand-heart"/></svg></div><h3>Charities</h3><p>The appeal is the moment the night is for. Sound the back tables can hear, your film on a wall bright enough to watch, and the night filmed for your next campaign.</p><small><b>Usually:</b> sound + 6m LED wall, stage lighting</small></article>
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></div><h3>Masjids</h3><p>Lectures, fundraisers, community iftars and Eid programmes. Clear speech for every row, and a crew that respects the space and the programme.</p><small><b>Usually:</b> sound + 3m LED wall, or sound + projector</small></article>
@@ -818,6 +910,19 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   var FORM_ENDPOINT = "https://formsubmit.co/ajax/info@eventpixels.co.uk";
   var WHATSAPP_URL = "https://wa.me/447446866773?text=Hi%20Event%20Pixels%2C%20I%27d%20like%20a%20quote%20for%20my%20event.%0A%0AName%3A%0AOrganisation%3A%0APhone%20number%3A%0A%0AType%20of%20event%3A%0AService%20required%20%28e.g.%20sound%2C%20LED%20screen%2C%20projector%2C%20lighting%29%3A%0A%0ADate%20%26%20time%20%28e.g.%2016th%20August%202026%2C%207pm-10%3A30pm%29%3A%0A%0AVenue%20name%20%26%20address%3A%0A%0ANumber%20of%20guests%3A%0AAnything%20else%20we%20should%20know%3A";
   var WHATSAPP_DISPLAY = "+44 7446 866773";
+
+  /* Mobile menu */
+  var menuBtn = document.getElementById("menuBtn"), mnav = document.getElementById("mnav");
+  function setMenu(open){
+    mnav.hidden = !open;
+    menuBtn.setAttribute("aria-expanded", open);
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  menuBtn.addEventListener("click", function(){ setMenu(mnav.hidden); });
+  mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ setMenu(false); }); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !mnav.hidden){ setMenu(false); menuBtn.focus(); } });
+  document.addEventListener("click", function(e){ if (!mnav.hidden && !mnav.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
+  window.addEventListener("resize", function(){ if (window.innerWidth > 900) setMenu(false); });
 
   /* WhatsApp links */
   document.querySelectorAll(".wa-link").forEach(function(a){
