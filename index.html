@@ -91,11 +91,12 @@ h1 em,h2 em{font-style:normal;display:block;color:var(--violet)}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(61,14,102,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-p)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:1.18rem;letter-spacing:-.03em;color:var(--white)}
-.links{display:flex;gap:30px;font-weight:600;font-size:.94rem}
+.links{display:flex;gap:clamp(18px,2.2vw,30px);font-weight:600;font-size:.94rem;white-space:nowrap}
 .links a{text-decoration:none;color:var(--soft);transition:color .15s}
 .links a:hover{color:var(--white)}
 .nav .btn{min-height:44px;padding:0 18px;font-size:.92rem}
-@media (max-width:900px){.links{display:none}}
+@media (max-width:1100px){.links{display:none}.nav .menu-btn{display:inline-flex}.nav{gap:12px}.nav>.btn{margin-left:auto}}
+.brand{white-space:nowrap}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;padding-block:clamp(48px,7vw,88px) 0}
@@ -459,8 +460,9 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     <nav class="links" aria-label="Main">
       <a href="#what-we-do">What we do</a>
       <a href="#packages">Packages</a>
-      <a href="#ramadan">Ramadan 2027</a>
+      <a href="#how-it-works">How it works</a>
       <a href="#who-we-work-with">Who we work with</a>
+      <a href="#ramadan">Ramadan 2027</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-primary" href="#check-your-date">Check your date</a>
@@ -469,9 +471,9 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   <nav class="mnav" id="mnav" aria-label="Menu" hidden>
     <a class="ml" href="#what-we-do">What we do</a>
     <a class="ml" href="#packages">Packages</a>
-    <a class="ml" href="#ramadan">Ramadan 2027</a>
-    <a class="ml" href="#who-we-work-with">Who we work with</a>
     <a class="ml" href="#how-it-works">How it works</a>
+    <a class="ml" href="#who-we-work-with">Who we work with</a>
+    <a class="ml" href="#ramadan">Ramadan 2027</a>
     <a class="ml" href="#faq">FAQ</a>
     <div class="btns"><a class="btn btn-primary" href="#check-your-date">Check a date</a><a class="btn btn-outline wa-link" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></div>
   </nav>
@@ -858,7 +860,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <p class="eyebrow">Sent</p>
         <h3>Got it, thank you.</h3>
         <p id="doneMsg">We'll come back to you today with a full price. If it's urgent, message us on WhatsApp.</p>
-        <p><b>Akeel and Nasim, Event Pixels</b></p>
+        <p><b>Aqeel and Nasim, Event Pixels</b></p>
       </div>
     </div>
   </div>
@@ -878,8 +880,9 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <nav aria-label="Footer">
           <a href="#what-we-do">What we do</a>
           <a href="#packages">Packages</a>
-          <a href="#ramadan">Ramadan 2027</a>
+          <a href="#how-it-works">How it works</a>
           <a href="#who-we-work-with">Who we work with</a>
+          <a href="#ramadan">Ramadan 2027</a>
           <a href="#faq">FAQ</a>
         </nav>
       </div>
@@ -922,7 +925,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ setMenu(false); }); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !mnav.hidden){ setMenu(false); menuBtn.focus(); } });
   document.addEventListener("click", function(e){ if (!mnav.hidden && !mnav.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
-  window.addEventListener("resize", function(){ if (window.innerWidth > 900) setMenu(false); });
+  window.addEventListener("resize", function(){ if (window.innerWidth > 1100) setMenu(false); });
 
   /* WhatsApp links */
   document.querySelectorAll(".wa-link").forEach(function(a){

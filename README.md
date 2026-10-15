@@ -34,7 +34,7 @@ Enquiries go to **info@eventpixels.co.uk** through FormSubmit (free, no account)
 
 - **No prices** anywhere on the site, including image descriptions.
 - The pillars are **Sound, Screens and Stage**. Never "lighting" as a pillar.
-- **Akeel and Nasim** in full, Akeel first.
+- **Aqeel and Nasim** in full, Aqeel first.
 - Violet is for emphasis only, never a button or background. Amber only in small amounts on purple.
 - No exclamation marks.
 
