@@ -447,18 +447,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .brandline .pgrid.r{right:-40px;top:-30px;--sq:36px;--cols:3;opacity:.7}
 @media (max-width:700px){.brandline .pgrid{display:none}}
 
-/* See it in your hall */
-.scale-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,64px);align-items:center}
-.toggle{display:inline-flex;padding:5px;border-radius:12px;background:var(--v16);gap:4px;align-self:flex-start}
-.toggle button{font:700 .95rem var(--font);color:var(--soft);background:none;border:0;padding:10px 20px;border-radius:8px;cursor:pointer;min-height:44px}
-.toggle button[aria-pressed="true"]{background:var(--white);color:var(--purple)}
-.scale-card{position:relative;background:var(--deep);border:1px solid var(--line-p);border-radius:var(--r-lg);padding:24px;min-width:0}
-.scale-card svg{width:100%;height:auto;display:block}
-.dims{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;font-variant-numeric:tabular-nums}
-.dims div{border-top:1px solid var(--line-p);padding-top:12px;font-size:.82rem;color:var(--soft)}
-.dims b{display:block;color:var(--white);font-size:1.6rem;line-height:1.1;letter-spacing:-.035em}
-@media (max-width:900px){.scale-grid{grid-template-columns:1fr}}
-
 /* Filmed */
 .film{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .film ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:12px}
@@ -880,47 +868,6 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   </div>
 </section>
 
-<section class="band" id="screens">
-  <div class="wrap scale-grid">
-    <div class="stack">
-      <p class="eyebrow">See it in your hall</p>
-      <h2>Two walls. <em>Both 2m high.</em></h2>
-      <p class="lede">Pick a width and see the wall drawn to scale beside a 1.8m person. When you've chosen, add it to your enquiry.</p>
-      <div class="toggle" role="group" aria-label="Screen width">
-        <button type="button" id="w3" aria-pressed="false">3m wall</button>
-        <button type="button" id="w6" aria-pressed="true">6m wall</button>
-      </div>
-      <div class="btn-row" style="margin-top:6px"><a class="btn btn-outline" href="#check-your-date" id="addWall">Add the 6m wall to my enquiry</a></div>
-    </div>
-    <div class="scale-card">
-      <div class="corner" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <svg id="scaleSvg" viewBox="0 0 640 330" role="img" aria-labelledby="scaleTitle">
-        <title id="scaleTitle">LED wall drawn to scale beside a 1.8 metre person</title>
-        <defs>
-          <linearGradient id="led" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9D6FF"/><stop offset=".55" stop-color="#C583FF"/><stop offset="1" stop-color="#7A2BC9"/></linearGradient>
-          <radialGradient id="up" cx=".5" cy="1" r=".9"><stop offset="0" stop-color="#FFB547" stop-opacity=".55"/><stop offset="1" stop-color="#FFB547" stop-opacity="0"/></radialGradient>
-        </defs>
-        <rect x="0" y="150" width="640" height="140" fill="url(#up)" opacity=".35"/>
-        <line x1="20" y1="290" x2="620" y2="290" stroke="#D9C4F0" stroke-opacity=".5" stroke-width="2"/>
-        <rect id="wallRect" x="40" y="111" width="396" height="132" rx="3" fill="url(#led)"/>
-        <g id="seams" stroke="#3D0E66" stroke-opacity=".12" stroke-width="1"></g>
-        <rect id="standL" x="52" y="243" width="8" height="47" fill="#D9C4F0" fill-opacity=".45"/>
-        <rect id="standR" x="416" y="243" width="8" height="47" fill="#D9C4F0" fill-opacity=".45"/>
-        <line id="dimW" x1="40" y1="95" x2="436" y2="95" stroke="#C583FF" stroke-width="1.5"/>
-        <text id="dimWt" x="238" y="84" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="16">6m</text>
-        <line id="dimH" x1="26" y1="111" x2="26" y2="243" stroke="#C583FF" stroke-width="1.5"/>
-        <text id="dimHt" x="18" y="182" text-anchor="end" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="16">2m</text>
-        <g id="person"></g>
-      </svg>
-      <div class="dims">
-        <div><b id="dW">6m</b>wide</div>
-        <div><b>2m</b>high</div>
-        <div><b id="dS">3 : 1</b>shape</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="band paper" id="filmed">
   <div class="wrap film">
     <div class="stack">
@@ -1071,7 +1018,6 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
             <label><input type="checkbox" id="n-feed" name="Needs" value="Live feed of the stage">Live feed</label>
             <label><input type="checkbox" id="n-unsure" name="Needs" value="Not sure yet">Not sure yet</label>
           </div>
-          <input type="hidden" id="wallChoice" name="Screen chosen" value="">
           <input type="hidden" id="pkgChoice" name="Package" value="">
           <p class="help" id="pkgNote" hidden style="color:var(--accent);font-weight:700"></p>
         </fieldset>
@@ -1173,43 +1119,6 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     a.target = "_blank"; a.rel = "noopener";
     if (a.textContent.trim().indexOf("[") === 0) a.textContent = WHATSAPP_DISPLAY;
   });
-
-  /* Screen to scale: 1m = 66px, floor at y=290, wall bottom 0.7m off the floor */
-  var M = 66, FLOOR = 290, LIFT = 0.7 * M, H = 2 * M, current = 6;
-  var NS = "http://www.w3.org/2000/svg";
-  function set(id, attrs){ var el = document.getElementById(id); for (var k in attrs) el.setAttribute(k, attrs[k]); return el; }
-  function drawWall(w){
-    current = w;
-    var width = w * M, x = w === 6 ? 56 : 56 + 1.5 * M, y = FLOOR - LIFT - H;
-    set("wallRect", {x:x, y:y, width:width, height:H});
-    var seams = document.getElementById("seams"); seams.innerHTML = "";
-    for (var i = 1; i < w * 2; i++){ var l = document.createElementNS(NS, "line"); l.setAttribute("x1", x + i * M / 2); l.setAttribute("x2", x + i * M / 2); l.setAttribute("y1", y); l.setAttribute("y2", y + H); seams.appendChild(l); }
-    for (var j = 1; j < 4; j++){ var h = document.createElementNS(NS, "line"); h.setAttribute("x1", x); h.setAttribute("x2", x + width); h.setAttribute("y1", y + j * M / 2); h.setAttribute("y2", y + j * M / 2); seams.appendChild(h); }
-    set("standL", {x:x + 12, y:y + H, height:LIFT});
-    set("standR", {x:x + width - 20, y:y + H, height:LIFT});
-    set("dimW", {x1:x, x2:x + width, y1:y - 16, y2:y - 16});
-    set("dimWt", {x:x + width / 2, y:y - 27}).textContent = w + "m";
-    set("dimH", {x1:x - 14, x2:x - 14, y1:y, y2:y + H});
-    set("dimHt", {x:x - 22, y:y + H / 2 + 6});
-    var px = x + width + 70, s = 1.8 * M / 110;
-    document.getElementById("person").innerHTML =
-      '<g transform="translate(' + px + ' ' + FLOOR + ') scale(' + s + ') translate(0 -110)">' +
-      '<circle cx="0" cy="10" r="10" fill="#F5F2F7"/>' +
-      '<path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z" fill="#F5F2F7"/></g>' +
-      '<text x="' + px + '" y="' + (FLOOR + 22) + '" text-anchor="middle" fill="#D9C4F0" font-family="Plus Jakarta Sans, sans-serif" font-size="13">1.8m</text>';
-    document.getElementById("dW").textContent = w + "m";
-    document.getElementById("dS").textContent = w === 6 ? "3 : 1" : "3 : 2";
-    document.getElementById("addWall").textContent = "Add the " + w + "m wall to my enquiry";
-    document.getElementById("w3").setAttribute("aria-pressed", w === 3);
-    document.getElementById("w6").setAttribute("aria-pressed", w === 6);
-  }
-  document.getElementById("w3").addEventListener("click", function(){ drawWall(3); });
-  document.getElementById("w6").addEventListener("click", function(){ drawWall(6); });
-  document.getElementById("addWall").addEventListener("click", function(){
-    document.getElementById("n-led").checked = true;
-    document.getElementById("wallChoice").value = current + "m × 2m LED wall";
-  });
-  drawWall(6);
 
   /* Package buttons fill the enquiry */
   document.querySelectorAll(".ask[data-pkg]").forEach(function(a){
