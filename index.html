@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Event AV hire Birmingham · Sound, screens, stage | Event Pixels</title>
-<meta name="description" content="Sound, LED screens and stage for charity dinners, masjid events, weddings and conferences in Birmingham. One crew, every event filmed, full price the same day.">
+<meta name="description" content="Sound, LED screens and stage for charity dinners, masjid events, weddings and conferences in Birmingham. One crew, set up early, a full price the same day.">
 <link rel="canonical" href="https://eventpixels.co.uk/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
@@ -12,14 +12,14 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://eventpixels.co.uk/">
 <meta property="og:title" content="Event Pixels · Sound, screens and stage in Birmingham">
-<meta property="og:description" content="Sound, LED screens and stage for charity dinners, masjid events, weddings and conferences. One crew, every event filmed, a full price the same day.">
+<meta property="og:description" content="Sound, LED screens and stage for charity dinners, masjid events, weddings and conferences. One crew, set up early, a full price the same day.">
 <meta property="og:image" content="https://eventpixels.co.uk/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Event Pixels: Seen and heard. Sound, screens and stage in Birmingham">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Event Pixels · Sound, screens and stage in Birmingham">
-<meta name="twitter:description" content="Sound, LED screens and stage for events across Birmingham. One crew, every event filmed, a full price the same day.">
+<meta name="twitter:description" content="Sound, LED screens and stage for events across Birmingham. One crew, set up early, a full price the same day.">
 <meta name="twitter:image" content="https://eventpixels.co.uk/images/og-image.jpg">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
@@ -33,7 +33,7 @@
    "name": "Event Pixels",
    "legalName": "Event Pixels Ltd",
    "url": "https://eventpixels.co.uk/",
-   "description": "Sound, LED screens and stage for events across Birmingham and the West Midlands: charity dinners, masjid programmes, weddings, school events and conferences. One crew, every event filmed and handed back.",
+   "description": "Sound, LED screens and stage for events across Birmingham and the West Midlands: charity dinners, masjid programmes, weddings, school events and conferences. One crew, set up early, a full price the same day.",
    "slogan": "Seen and heard.",
    "telephone": "+447446866773",
    "email": "info@eventpixels.co.uk",
@@ -86,8 +86,7 @@
    "knowsAbout": [
     "LED screen hire",
     "event sound hire",
-    "stage lighting hire",
-    "event filming"
+    "stage lighting hire"
    ],
    "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -147,14 +146,6 @@
        "@type": "Service",
        "name": "Stage lighting",
        "description": "Stage wash, uplighting and a spotlight on the head table"
-      }
-     },
-     {
-      "@type": "Offer",
-      "itemOffered": {
-       "@type": "Service",
-       "name": "Event filming",
-       "description": "Setup time-lapse, the room, a short organiser testimonial, delivered within 48 hours"
       }
      }
     ]
@@ -232,10 +223,10 @@
     },
     {
      "@type": "Question",
-     "name": "Do we get the footage?",
+     "name": "Do you film the event?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes, every event. Back within 48 hours, ready to post."
+      "text": "Only a little, as a thank-you. We record a short video of your night so you have something to look back on, and send it over afterwards. If you'd rather we didn't, just say."
      }
     }
    ]
@@ -393,6 +384,8 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .included{position:relative;margin-top:24px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;padding:26px 30px;border-radius:var(--r-lg);background:var(--purple);color:var(--white)}
 .included p{color:var(--soft);max-width:50ch}
 .included p b{color:var(--white)}
+.included>div.inc-text{display:grid;gap:8px;min-width:0}
+.included .thanks{font-size:.9rem;color:var(--soft);opacity:.9}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 13px;border-radius:999px;background:var(--v16);font-size:.84rem;font-weight:600}
 .chip i{width:8px;height:8px;border-radius:2px;background:var(--violet)}
@@ -434,6 +427,25 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 @media (max-width:900px){.packs{grid-template-columns:repeat(2,minmax(0,1fr))}.addons{grid-template-columns:1fr}}
 @media (max-width:580px){.packs{grid-template-columns:1fr}}
 
+
+/* Package size tooltip */
+.pack{position:relative}
+.size{position:relative}
+.size-btn{display:inline-flex;align-items:center;gap:7px;border:0;background:var(--accent-soft);color:var(--purple);font:600 .82rem var(--font);padding:6px 11px;border-radius:999px;cursor:pointer}
+.size-btn .ic{width:15px;height:15px}
+.pack.featured .size-btn{background:var(--v16);color:var(--white)}
+.size-tip{position:absolute;left:-6px;bottom:calc(100% + 10px);z-index:5;width:272px;max-width:calc(100vw - 72px);background:var(--white);color:var(--ink);border:1px solid var(--rule);border-radius:12px;padding:12px 14px 12px;box-shadow:0 14px 34px rgba(42,8,71,.22)}
+.size-tip::after{content:"";position:absolute;left:28px;bottom:-7px;width:12px;height:12px;background:var(--white);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transform:rotate(45deg)}
+.size-tip svg{width:100%;height:auto;display:block}
+.size-tip svg text{font:700 11px var(--font);fill:var(--purple)}
+.size-tip svg .sm-t{font-weight:500;font-size:9px;fill:var(--ink3)}
+.size-tip .scr{fill:var(--violet)}
+.size-tip .sm{stroke:var(--purple);stroke-opacity:.18;stroke-width:.8}
+.size-tip .leg{fill:var(--rule2)}
+.size-tip .fl{stroke:var(--rule2);stroke-width:1.5}
+.size-tip .per{fill:var(--ink2)}
+.size-tip p{margin:8px 0 0;font-size:.82rem;line-height:1.45;color:var(--ink2)}
+
 /* Brand line band */
 .brandline{position:relative;overflow:hidden;text-align:center;padding-block:clamp(64px,9vw,104px)}
 .brandline .trio{display:flex;justify-content:center;gap:clamp(28px,6vw,72px);flex-wrap:wrap}
@@ -447,19 +459,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .brandline .pgrid.r{right:-40px;top:-30px;--sq:36px;--cols:3;opacity:.7}
 @media (max-width:700px){.brandline .pgrid{display:none}}
 
-/* Filmed */
-.film{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
-.film ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:12px}
-.film li{display:flex;gap:14px;align-items:center;font-weight:600}
-.film li .tile{width:40px;height:40px;border-radius:10px}
-.film li .tile .ic{width:20px;height:20px}
-.reel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.reel div{position:relative;aspect-ratio:9/16;border-radius:12px;background:linear-gradient(180deg,#5B2690,var(--purple));display:flex;flex-direction:column;justify-content:space-between;padding:10px;font-size:.72rem;font-weight:700;color:var(--soft);line-height:1.25;min-width:0;overflow:hidden}
-.reel div::before{content:"";width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 7l9 5-9 5z' fill='white'/%3E%3C/svg%3E") center/12px no-repeat}
-.reel div:nth-child(odd){transform:translateY(20px)}
-.reel div:nth-child(3){background:linear-gradient(180deg,#7A2BC9,var(--purple))}
-@media (max-width:900px){.film{grid-template-columns:1fr}}
-@media (max-width:480px){.reel{grid-template-columns:repeat(3,minmax(0,1fr))}.reel div:nth-child(n+4){display:none}}
+
 
 /* Steps (brand component) */
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0}
@@ -498,6 +498,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 
 /* FAQ */
 .faq-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(32px,5vw,72px)}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:20px}}
 .faq{border-top:1px solid var(--rule)}
 .faq details{border-bottom:1px solid var(--rule)}
 .faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-weight:700;font-size:1.06rem;position:relative}
@@ -622,9 +623,6 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   .addons{padding:20px}
   /* Brand line */
   .brandline .trio{gap:28px}
-  /* Filmed */
-  .film ul{gap:10px}
-  .reel{gap:8px}
   /* Steps: number left, text right */
   .steps{grid-template-columns:1fr;gap:0}
   .steps li{display:grid;grid-template-columns:40px 1fr;column-gap:16px;row-gap:4px;padding:16px 0;border-bottom:1px solid var(--rule)}
@@ -676,6 +674,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
   <symbol id="i-tv" viewBox="0 0 24 24"><rect width="20" height="15" x="2" y="7" rx="2"/><path d="m17 2-5 5-5-5"/></symbol>
   <symbol id="i-projector" viewBox="0 0 24 24"><path d="M5 7 3 5M9 6V3M13 7l2-2"/><circle cx="9" cy="13" r="3"/><path d="M11.83 12H20a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2.17M4.17 12H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h1"/><path d="M8 20h8"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></symbol>
   <symbol id="mark" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#c583ff"/><rect x="20" y="20" width="16" height="16" rx="3.2" fill="#3d0e66"/><rect x="42" y="20" width="16" height="16" rx="3.2" fill="#3d0e66"/><rect x="64" y="20" width="16" height="16" rx="3.2" fill="#fff"/><rect x="20" y="42" width="16" height="16" rx="3.2" fill="#fff"/><rect x="42" y="42" width="16" height="16" rx="3.2" fill="#fff"/><rect x="64" y="42" width="16" height="16" rx="3.2" fill="#3d0e66"/><rect x="20" y="64" width="16" height="16" rx="3.2" fill="#3d0e66"/><rect x="42" y="64" width="16" height="16" rx="3.2" fill="#fff"/><rect x="64" y="64" width="16" height="16" rx="3.2" fill="#3d0e66"/></symbol>
 </svg>
 
@@ -718,7 +717,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       <div>
         <p class="eyebrow">Sound, screens and stage · Birmingham</p>
         <h1 style="margin-top:22px">Seen <em>and heard.</em></h1>
-        <p class="lede">Sound, screens and stage for events across Birmingham. Every seat hears the speaker, every screen reads with the lights up, and the whole event is filmed and handed back to you.</p>
+        <p class="lede">Sound, screens and stage for events across Birmingham. Every seat hears the speaker, every screen reads with the lights up, and the room looks like the occasion it is.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="#check-your-date">Check your date <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           <span class="note"><i></i>Full price back the same day</span>
@@ -737,7 +736,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       <div class="fact"><div class="tile on-p"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></div><div><b>Set up early</b><span>Soundchecked before doors</span></div></div>
       <div class="fact"><div class="tile on-p"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg></div><div><b>Full price, same day</b><span>Everything in it written down</span></div></div>
       <div class="fact"><div class="tile on-p"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></div><div><b>One crew</b><span>One invoice, one number</span></div></div>
-      <div class="fact"><div class="tile on-p"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg></div><div><b>Filmed for you</b><span>Back within 48 hours</span></div></div>
+      <div class="fact"><div class="tile on-p"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></div><div><b>Left as we found it</b><span>Packed down, cables and all</span></div></div>
     </div>
   </div>
 </section>
@@ -756,7 +755,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <p class="eyebrow">What we do</p>
         <h2>One crew for <em>sound, screens and stage.</em></h2>
       </div>
-      <p class="lede">One invoice, one number to call on the day, and the whole event filmed. Tell us the venue and how many guests, and we'll recommend the right setup in the quote.</p>
+      <p class="lede">One invoice and one number to call on the day. Tell us the venue and how many guests, and we'll recommend the right setup in the quote.</p>
     </div>
     <div class="pillars">
       <article class="pillar">
@@ -786,7 +785,8 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     </div>
     <div class="included">
       <div class="corner" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <p><b>Every package includes</b> delivery, setup, someone operating it throughout, pack-down and two microphones.</p>
+      <div class="inc-text"><p><b>Every package includes</b> delivery, setup, someone operating it throughout, pack-down and two microphones.</p>
+      <p class="thanks">And a small thank-you from us: a short video of your night to keep, because most organisers never get one.</p></div>
       <div class="chips"><span class="chip"><i></i>Delivery</span><span class="chip"><i></i>Setup</span><span class="chip"><i></i>Operated throughout</span><span class="chip"><i></i>Pack-down</span><span class="chip"><i></i>Two mics</span></div>
     </div>
   </div>
@@ -808,6 +808,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Our biggest setup</span>
         <h3>Sound + 6m LED wall</h3>
         <ul><li>Full PA sized to the room</li><li>6m × 2m LED wall</li><li>Two microphones</li></ul>
+        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip1"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the size</button><div class="size-tip" id="tip1" role="tooltip" hidden><svg viewBox="0 0 240 104" aria-hidden="true"><line x1="4" y1="92" x2="236" y2="92" class="fl"/><rect x="14" y="19.2" width="168.0" height="56.0" rx="2" class="scr"/><g class="sm"><line x1="28.0" y1="19.2" x2="28.0" y2="75.2"/><line x1="42.0" y1="19.2" x2="42.0" y2="75.2"/><line x1="56.0" y1="19.2" x2="56.0" y2="75.2"/><line x1="70.0" y1="19.2" x2="70.0" y2="75.2"/><line x1="84.0" y1="19.2" x2="84.0" y2="75.2"/><line x1="98.0" y1="19.2" x2="98.0" y2="75.2"/><line x1="112.0" y1="19.2" x2="112.0" y2="75.2"/><line x1="126.0" y1="19.2" x2="126.0" y2="75.2"/><line x1="140.0" y1="19.2" x2="140.0" y2="75.2"/><line x1="154.0" y1="19.2" x2="154.0" y2="75.2"/><line x1="168.0" y1="19.2" x2="168.0" y2="75.2"/><line x1="14" y1="33.2" x2="182.0" y2="33.2"/><line x1="14" y1="47.2" x2="182.0" y2="47.2"/><line x1="14" y1="61.2" x2="182.0" y2="61.2"/></g><rect x="20" y="75.2" width="3" height="16.8" class="leg"/><rect x="173.0" y="75.2" width="3" height="16.8" class="leg"/><text x="98.0" y="13.2" text-anchor="middle">6m</text><g transform="translate(210 92) scale(0.4582) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g><text x="210" y="102" text-anchor="middle" class="sm-t">1.8m</text></svg><p>6m × 2m, beside a 1.8m person. Fills the front of a large hall and reads from the back row.</p></div></div>
         <p class="suits"><b>Suits:</b> Large halls, fundraising dinners, weddings</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 6m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -815,6 +816,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Sound and screen</span>
         <h3>Sound + 3m LED wall</h3>
         <ul><li>Full PA sized to the room</li><li>3m × 2m LED wall</li><li>Two microphones</li></ul>
+        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip3"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the size</button><div class="size-tip" id="tip3" role="tooltip" hidden><svg viewBox="0 0 240 104" aria-hidden="true"><line x1="4" y1="92" x2="236" y2="92" class="fl"/><rect x="14" y="19.2" width="84.0" height="56.0" rx="2" class="scr"/><g class="sm"><line x1="28.0" y1="19.2" x2="28.0" y2="75.2"/><line x1="42.0" y1="19.2" x2="42.0" y2="75.2"/><line x1="56.0" y1="19.2" x2="56.0" y2="75.2"/><line x1="70.0" y1="19.2" x2="70.0" y2="75.2"/><line x1="84.0" y1="19.2" x2="84.0" y2="75.2"/><line x1="14" y1="33.2" x2="98.0" y2="33.2"/><line x1="14" y1="47.2" x2="98.0" y2="47.2"/><line x1="14" y1="61.2" x2="98.0" y2="61.2"/></g><rect x="20" y="75.2" width="3" height="16.8" class="leg"/><rect x="89.0" y="75.2" width="3" height="16.8" class="leg"/><text x="56.0" y="13.2" text-anchor="middle">3m</text><g transform="translate(126 92) scale(0.4582) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g><text x="126" y="102" text-anchor="middle" class="sm-t">1.8m</text></svg><p>3m × 2m, beside a 1.8m person. Right for mid-size halls, conferences and side screens.</p></div></div>
         <p class="suits"><b>Suits:</b> Mid-size halls, conferences, prize-givings</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 3m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -822,6 +824,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Screen only</span>
         <h3>6m LED wall</h3>
         <ul><li>6m × 2m LED wall</li><li>Operated throughout</li><li>Two microphones</li></ul>
+        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip2"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the size</button><div class="size-tip" id="tip2" role="tooltip" hidden><svg viewBox="0 0 240 104" aria-hidden="true"><line x1="4" y1="92" x2="236" y2="92" class="fl"/><rect x="14" y="19.2" width="168.0" height="56.0" rx="2" class="scr"/><g class="sm"><line x1="28.0" y1="19.2" x2="28.0" y2="75.2"/><line x1="42.0" y1="19.2" x2="42.0" y2="75.2"/><line x1="56.0" y1="19.2" x2="56.0" y2="75.2"/><line x1="70.0" y1="19.2" x2="70.0" y2="75.2"/><line x1="84.0" y1="19.2" x2="84.0" y2="75.2"/><line x1="98.0" y1="19.2" x2="98.0" y2="75.2"/><line x1="112.0" y1="19.2" x2="112.0" y2="75.2"/><line x1="126.0" y1="19.2" x2="126.0" y2="75.2"/><line x1="140.0" y1="19.2" x2="140.0" y2="75.2"/><line x1="154.0" y1="19.2" x2="154.0" y2="75.2"/><line x1="168.0" y1="19.2" x2="168.0" y2="75.2"/><line x1="14" y1="33.2" x2="182.0" y2="33.2"/><line x1="14" y1="47.2" x2="182.0" y2="47.2"/><line x1="14" y1="61.2" x2="182.0" y2="61.2"/></g><rect x="20" y="75.2" width="3" height="16.8" class="leg"/><rect x="173.0" y="75.2" width="3" height="16.8" class="leg"/><text x="98.0" y="13.2" text-anchor="middle">6m</text><g transform="translate(210 92) scale(0.4582) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g><text x="210" y="102" text-anchor="middle" class="sm-t">1.8m</text></svg><p>6m × 2m, beside a 1.8m person. Fills the front of a large hall and reads from the back row.</p></div></div>
         <p class="suits"><b>Suits:</b> Venues with their own sound</p>
         <a class="ask" href="#check-your-date" data-pkg="6m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -829,6 +832,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Sound and screen</span>
         <h3>Sound + 65" TV</h3>
         <ul><li>Full PA sized to the room</li><li>65" screen on a stand</li><li>Two microphones</li></ul>
+        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip5"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the size</button><div class="size-tip" id="tip5" role="tooltip" hidden><svg viewBox="0 0 240 104" aria-hidden="true"><line x1="4" y1="92" x2="236" y2="92" class="fl"/><rect x="60" y="42.7" width="40.3" height="22.7" rx="2" class="scr"/><rect x="78.7" y="65.4" width="3" height="26.6" class="leg"/><rect x="68.2" y="90" width="24" height="2" class="leg"/><text x="80.2" y="36.7" text-anchor="middle">65"</text><g transform="translate(150 92) scale(0.4582) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g><text x="150" y="102" text-anchor="middle" class="sm-t">1.8m</text></svg><p>A 65-inch screen, about 1.4m wide, on a stand. For talks and smaller rooms.</p></div></div>
         <p class="suits"><b>Suits:</b> Talks and smaller rooms</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 65&quot; TV">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -843,6 +847,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Screen only</span>
         <h3>3m LED wall</h3>
         <ul><li>3m × 2m LED wall</li><li>Operated throughout</li><li>Two microphones</li></ul>
+        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip4"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the size</button><div class="size-tip" id="tip4" role="tooltip" hidden><svg viewBox="0 0 240 104" aria-hidden="true"><line x1="4" y1="92" x2="236" y2="92" class="fl"/><rect x="14" y="19.2" width="84.0" height="56.0" rx="2" class="scr"/><g class="sm"><line x1="28.0" y1="19.2" x2="28.0" y2="75.2"/><line x1="42.0" y1="19.2" x2="42.0" y2="75.2"/><line x1="56.0" y1="19.2" x2="56.0" y2="75.2"/><line x1="70.0" y1="19.2" x2="70.0" y2="75.2"/><line x1="84.0" y1="19.2" x2="84.0" y2="75.2"/><line x1="14" y1="33.2" x2="98.0" y2="33.2"/><line x1="14" y1="47.2" x2="98.0" y2="47.2"/><line x1="14" y1="61.2" x2="98.0" y2="61.2"/></g><rect x="20" y="75.2" width="3" height="16.8" class="leg"/><rect x="89.0" y="75.2" width="3" height="16.8" class="leg"/><text x="56.0" y="13.2" text-anchor="middle">3m</text><g transform="translate(126 92) scale(0.4582) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g><text x="126" y="102" text-anchor="middle" class="sm-t">1.8m</text></svg><p>3m × 2m, beside a 1.8m person. Right for mid-size halls, conferences and side screens.</p></div></div>
         <p class="suits"><b>Suits:</b> Venues with their own sound</p>
         <a class="ask" href="#check-your-date" data-pkg="3m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
@@ -865,24 +870,6 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       <div class="pg"><div class="g"><i></i><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i class="on"></i></div>Stage</div>
     </div>
     <p class="line">Seen <span>and heard.</span></p>
-  </div>
-</section>
-
-<section class="band paper" id="filmed">
-  <div class="wrap film">
-    <div class="stack">
-      <p class="eyebrow">Filmed and handed back</p>
-      <h2>Your event keeps working <em>after everyone has gone home.</em></h2>
-      <p class="lede">We film every job and hand it back within 48 hours, ready to post, so your next appeal starts with proof of the last one.</p>
-      <ul>
-        <li><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg></span>The setup, as a time-lapse</li>
-        <li><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span>The room during the event</li>
-        <li><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg></span>A 30-second word from you</li>
-      </ul>
-    </div>
-    <div class="reel" aria-hidden="true">
-      <div>Setup time-lapse</div><div>The room</div><div>A word from you</div><div>The finished stage</div><div>Pack-down</div>
-    </div>
   </div>
 </section>
 
@@ -914,12 +901,12 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     </div>
     <p class="swipe" aria-hidden="true"><i></i>Swipe to see who we work with</p>
     <div class="sectors">
-      <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-hand-heart"/></svg></div><h3>Charities</h3><p>The appeal is the moment the night is for. Sound the back tables can hear, your film on a wall bright enough to watch, and the night filmed for your next campaign.</p><small><b>Usually:</b> sound + 6m LED wall, stage lighting</small></article>
+      <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-hand-heart"/></svg></div><h3>Charities</h3><p>The appeal is the moment the night is for. Sound the back tables can hear, and your appeal film on a wall bright enough to watch with the lights up.</p><small><b>Usually:</b> sound + 6m LED wall, stage lighting</small></article>
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></div><h3>Masjids</h3><p>Lectures, fundraisers, community iftars and Eid programmes. Clear speech for every row, and a crew that respects the space and the programme.</p><small><b>Usually:</b> sound + 3m LED wall, or sound + projector</small></article>
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-rings"/></svg></div><h3>Weddings</h3><p>Speeches heard by every table, your photos on a 6m wall, the stage and head table lit. Your family enjoys the day; we handle the room.</p><small><b>Usually:</b> sound + 6m LED wall, full stage</small></article>
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-grad"/></svg></div><h3>Schools &amp; colleges</h3><p>Prize-givings, proms and graduations. Every name read out clearly, every student on the big screen, working around the site rules.</p><small><b>Usually:</b> sound + 3m LED wall, stage lighting</small></article>
       <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></div><h3>Community groups</h3><p>Awards nights, cultural events and AGMs, on a community budget. One quote, everything in it written down, no surprises after.</p><small><b>Usually:</b> sound + 65" TV or projector</small></article>
-      <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-brief"/></svg></div><h3>Business &amp; conferences</h3><p>Launches, conferences and networking events. Clear presenters, bright slides in a daylit room, and footage you can use afterwards.</p><small><b>Usually:</b> sound + 3m or 6m LED wall</small></article>
+      <article class="sector"><div class="tile"><svg class="ic" aria-hidden="true"><use href="#i-brief"/></svg></div><h3>Business &amp; conferences</h3><p>Launches, conferences and networking events. Clear presenters and bright slides, even in a daylit room.</p><small><b>Usually:</b> sound + 3m or 6m LED wall</small></article>
     </div>
   </div>
 </section>
@@ -964,7 +951,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
       <details><summary>Can you play our appeal video or show a live feed?</summary><p>Yes. Send us the file beforehand and we'll test it at soundcheck.</p></details>
       <details><summary>Our event is less than a week away.</summary><p>Message us on WhatsApp rather than filling in the form, and we'll tell you straight away whether we can do it.</p></details>
       <details><summary>How do we pay?</summary><p>A deposit to hold the date, and the balance on or before the event day.</p></details>
-      <details><summary>Do we get the footage?</summary><p>Yes, every event. Back within 48 hours, ready to post.</p></details>
+      <details><summary>Do you film the event?</summary><p>Only a little, as a thank-you. We record a short video of your night so you have something to look back on, and send it over afterwards. If you'd rather we didn't, just say.</p></details>
     </div>
   </div>
 </section>
@@ -1119,6 +1106,27 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     a.target = "_blank"; a.rel = "noopener";
     if (a.textContent.trim().indexOf("[") === 0) a.textContent = WHATSAPP_DISPLAY;
   });
+
+  /* Package size tooltips */
+  var tipBtns = document.querySelectorAll(".size-btn");
+  function closeTips(except){ tipBtns.forEach(function(b){ if (b !== except){ b.setAttribute("aria-expanded","false"); document.getElementById(b.getAttribute("aria-controls")).hidden = true; } }); }
+  tipBtns.forEach(function(b){
+    var tip = document.getElementById(b.getAttribute("aria-controls"));
+    var shownAt = 0;
+    function show(){ closeTips(b); tip.hidden = false; b.setAttribute("aria-expanded","true"); shownAt = Date.now(); }
+    function hide(){ tip.hidden = true; b.setAttribute("aria-expanded","false"); }
+    b.addEventListener("click", function(e){
+      e.stopPropagation();
+      if (!tip.hidden && Date.now() - shownAt < 500) return; /* opened by hover a moment ago: keep it open */
+      tip.hidden ? show() : hide();
+    });
+    if (window.matchMedia("(hover: hover)").matches){
+      b.parentNode.addEventListener("mouseenter", show);
+      b.parentNode.addEventListener("mouseleave", hide);
+    }
+  });
+  document.addEventListener("click", function(){ closeTips(null); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeTips(null); });
 
   /* Package buttons fill the enquiry */
   document.querySelectorAll(".ask[data-pkg]").forEach(function(a){
