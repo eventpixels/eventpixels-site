@@ -428,40 +428,73 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 @media (max-width:580px){.packs{grid-template-columns:1fr}}
 
 
-/* Package setup tooltip */
-.pack{position:relative}
-.size{position:relative}
-.size-btn{display:inline-flex;align-items:center;gap:7px;border:0;background:var(--accent-soft);color:var(--purple);font:600 .82rem var(--font);padding:6px 11px;border-radius:999px;cursor:pointer}
+/* Package setup popup */
+.size-btn{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;border:0;background:var(--accent-soft);color:var(--purple);font:600 .82rem var(--font);padding:7px 12px;border-radius:999px;cursor:pointer;transition:background .15s}
 .size-btn .ic{width:15px;height:15px}
+.size-btn:hover{background:#EADAFA}
 .pack.featured .size-btn{background:var(--v16);color:var(--white)}
-.size-tip{position:absolute;left:-6px;bottom:calc(100% + 10px);z-index:20;width:300px;background:var(--white);color:var(--ink);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;box-shadow:0 14px 34px rgba(42,8,71,.22);display:grid;gap:10px}
-.size-tip::after{content:"";position:absolute;left:28px;bottom:-7px;width:12px;height:12px;background:var(--white);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transform:rotate(45deg)}
-.size-tip figure{margin:0;display:grid;gap:4px}
-.size-tip figure+figure{padding-top:10px;border-top:1px solid var(--rule)}
-.size-tip svg{width:100%;height:auto;display:block}
-.size-tip svg text{font:700 10px var(--font);fill:var(--purple)}
-.size-tip figcaption{font-size:.8rem;line-height:1.4;color:var(--ink2)}
-.size-tip .scr{fill:var(--violet)}
-.size-tip .psc{fill:var(--off);stroke:var(--rule2);stroke-width:1.2}
-.size-tip .sm{stroke:var(--purple);stroke-opacity:.18;stroke-width:.7}
-.size-tip .leg{fill:var(--rule2)}
-.size-tip .fl{stroke:var(--rule2);stroke-width:1.5}
-.size-tip .rsr{fill:var(--ink2)}
-.size-tip .drp{fill:var(--ink)}
-.size-tip .fold{stroke:var(--white);stroke-opacity:.12;stroke-width:.8}
-.size-tip .stg{fill:var(--accent-soft);stroke:var(--rule2);stroke-width:.8}
-.size-tip .pod{fill:var(--rule2)}
-.size-tip .per{fill:var(--ink2)}
-.size-tip .spk rect{fill:var(--purple)}
-.size-tip .spk .cone{fill:var(--violet)}
-.size-tip .spk line{stroke:var(--purple);stroke-width:1.4}
-.size-tip .tip-note{margin:0;font-size:.74rem;color:var(--ink3)}
-.tip-x{display:none;position:absolute;top:6px;right:8px;width:32px;height:32px;border:0;background:none;font:400 1.4rem var(--font);color:var(--ink2);cursor:pointer}
-@media (max-width:700px){
-  .size-tip{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));width:auto;max-height:70vh;overflow-y:auto;padding:16px 16px 14px;z-index:40}
-  .size-tip::after{display:none}
-  .tip-x{display:block}
+.pack.featured .size-btn:hover{background:#5F2A8E}
+html.modal-open{overflow:hidden}
+.setup-modal{width:min(680px,calc(100vw - 40px));max-width:none;max-height:calc(100dvh - 40px);margin:auto;padding:0;border:0;border-radius:var(--r-xl);background:var(--white);color:var(--ink);box-shadow:0 30px 80px rgba(20,4,36,.45);overflow:auto;overscroll-behavior:contain}
+.setup-modal::backdrop{background:rgba(42,8,71,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.setup-modal[open]{animation:smIn .22s ease-out}
+.setup-modal[open]::backdrop{animation:smFade .22s ease-out}
+@keyframes smIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes smFade{from{opacity:0}to{opacity:1}}
+.sm-card{position:relative;display:grid;gap:14px;padding:clamp(22px,3.4vw,34px)}
+.sm-card .eyebrow{color:var(--accent);padding-right:52px}
+.sm-card h3{font-size:clamp(1.5rem,3.4vw,1.9rem);line-height:1.1;letter-spacing:-.03em;margin-top:-4px}
+.sm-suits{color:var(--ink2);font-size:.98rem;margin-top:-6px}
+.sm-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:12px;border:0;background:var(--accent-soft);color:var(--purple);display:grid;place-items:center;cursor:pointer;transition:background .15s}
+.sm-close:hover{background:#EADAFA}
+.sm-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.sm-toggle{display:inline-flex;justify-self:start;gap:4px;padding:4px;border-radius:12px;background:var(--off);border:1px solid var(--rule);margin-top:2px}
+.sm-toggle button{font:700 .9rem var(--font);color:var(--ink2);background:none;border:0;padding:9px 16px;border-radius:9px;cursor:pointer;min-height:40px}
+.sm-toggle button[aria-pressed="true"]{background:var(--white);color:var(--purple);box-shadow:0 1px 3px rgba(42,8,71,.14)}
+.sm-stage{position:relative;background:var(--off);border-radius:var(--r-lg);padding:clamp(18px,3vw,28px) clamp(14px,2.6vw,26px) 16px;overflow:hidden}
+.sm-stage::before{content:"";position:absolute;top:14px;right:14px;width:10px;height:10px;border-radius:2px;background:var(--violet);box-shadow:14px 0 0 var(--purple),0 14px 0 rgba(197,131,255,.4)}
+.setup-fig{margin:0;display:grid;gap:12px}
+.setup-fig[hidden]{display:none}
+.setup-fig svg{width:100%;height:auto;max-height:34vh;display:block}
+.setup-fig figcaption{font-size:.95rem;line-height:1.45;color:var(--ink);font-weight:600}
+.setup-fig svg text{font:700 8px var(--font);fill:var(--purple)}
+.setup-fig .scr{fill:var(--violet)}
+.setup-fig .psc{fill:var(--white);stroke:var(--rule2);stroke-width:1.2}
+.setup-fig .sm{stroke:var(--purple);stroke-opacity:.18;stroke-width:.6}
+.setup-fig .leg{fill:var(--rule2)}
+.setup-fig .fl{stroke:var(--rule2);stroke-width:1.2}
+.setup-fig .rsr{fill:var(--ink2)}
+.setup-fig .drp{fill:var(--ink)}
+.setup-fig .fold{stroke:var(--white);stroke-opacity:.12;stroke-width:.8}
+.setup-fig .stg{fill:var(--accent-soft);stroke:var(--rule2);stroke-width:.8}
+.setup-fig .pod{fill:var(--rule2)}
+.setup-fig .per{fill:var(--ink2)}
+.setup-fig .spk rect{fill:var(--purple)}
+.setup-fig .spk .cone{fill:var(--violet)}
+.setup-fig .spk line{stroke:var(--purple);stroke-width:1.2}
+.sm-note{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--ink3)}
+.sm-note i{width:8px;height:8px;border-radius:2px;background:var(--amber);flex:none}
+.sm-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.setup-modal .btn-primary{background:var(--purple);color:var(--white)}
+.sm-done{background:transparent;color:var(--purple);box-shadow:inset 0 0 0 1.5px var(--rule2)}
+.setup-modal :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:600px){
+  .setup-modal{width:100%;max-width:100%;max-height:calc(100dvh - 12px);margin:auto 0 0;border-radius:24px 24px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}
+  .setup-modal[open]{animation:smUp .26s ease-out}
+  @keyframes smUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+  .sm-card{gap:12px;padding:20px 18px 18px}
+  .sm-card::before{content:"";justify-self:center;width:40px;height:4px;border-radius:4px;background:var(--rule2);margin:-6px 0 2px}
+  .sm-close{top:12px;right:12px}
+  .sm-toggle{display:flex;justify-self:stretch}
+  .sm-toggle button{flex:1;padding:9px 8px}
+  .sm-stage{padding:18px 12px 14px}
+  .setup-fig figcaption{font-size:.9rem}
+  .sm-actions{display:grid;grid-template-columns:1fr auto;gap:8px}
+  .sm-actions .btn{min-height:48px;padding:0 14px;white-space:nowrap}
+  .sm-done{padding:0 18px}
+  .setup-fig svg text{font-size:10px}
 }
+@media (prefers-reduced-motion:reduce){.setup-modal[open],.setup-modal[open]::backdrop{animation:none}}
 
 /* Brand line band */
 .brandline{position:relative;overflow:hidden;text-align:center;padding-block:clamp(64px,9vw,104px)}
@@ -825,7 +858,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Our biggest setup</span>
         <h3>Sound + 6m LED wall</h3>
         <ul><li>Full PA sized to the room</li><li>6m × 2m LED wall, or two 3m walls</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip1"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip1" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="One 6 metre LED wall raised behind the stage, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="73.0" y="84.0" width="114.0" height="12.0" class="rsr"/><rect x="70.0" y="44.0" width="120.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="90.0" y1="44.0" x2="90.0" y2="84.0"/><line x1="100.0" y1="44.0" x2="100.0" y2="84.0"/><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="160.0" y1="44.0" x2="160.0" y2="84.0"/><line x1="170.0" y1="44.0" x2="170.0" y2="84.0"/><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="70.0" y1="54.0" x2="190.0" y2="54.0"/><line x1="70.0" y1="64.0" x2="190.0" y2="64.0"/><line x1="70.0" y1="74.0" x2="190.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">6m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g class="spk"><rect x="49.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="54" cy="61.7" r="2.6" class="cone"/><line x1="54" y1="67.0" x2="54" y2="90"/><line x1="54" y1="90" x2="49" y2="96"/><line x1="54" y1="90" x2="59" y2="96"/></g><g class="spk"><rect x="201.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="206" cy="61.7" r="2.6" class="cone"/><line x1="206" y1="67.0" x2="206" y2="90"/><line x1="206" y1="90" x2="201" y2="96"/><line x1="206" y1="90" x2="211" y2="96"/></g><g transform="translate(248 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 6m wall raised behind the stage, a speaker each side.</figcaption></figure><figure><svg viewBox="0 0 260 104" role="img" aria-label="Two 3 metre LED walls on risers, one each side of the stage, with a speaker at each end"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="33.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="30.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="40.0" y1="44.0" x2="40.0" y2="84.0"/><line x1="50.0" y1="44.0" x2="50.0" y2="84.0"/><line x1="60.0" y1="44.0" x2="60.0" y2="84.0"/><line x1="70.0" y1="44.0" x2="70.0" y2="84.0"/><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="30.0" y1="54.0" x2="90.0" y2="54.0"/><line x1="30.0" y1="64.0" x2="90.0" y2="64.0"/><line x1="30.0" y1="74.0" x2="90.0" y2="74.0"/></g><text x="60.0" y="39.0" text-anchor="middle">3m</text><rect x="173.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="170.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="190.0" y1="44.0" x2="190.0" y2="84.0"/><line x1="200.0" y1="44.0" x2="200.0" y2="84.0"/><line x1="210.0" y1="44.0" x2="210.0" y2="84.0"/><line x1="220.0" y1="44.0" x2="220.0" y2="84.0"/><line x1="170.0" y1="54.0" x2="230.0" y2="54.0"/><line x1="170.0" y1="64.0" x2="230.0" y2="64.0"/><line x1="170.0" y1="74.0" x2="230.0" y2="74.0"/></g><text x="200.0" y="39.0" text-anchor="middle">3m</text><g class="spk"><rect x="9.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="14" cy="61.7" r="2.6" class="cone"/><line x1="14" y1="67.0" x2="14" y2="90"/><line x1="14" y1="90" x2="9" y2="96"/><line x1="14" y1="90" x2="19" y2="96"/></g><g class="spk"><rect x="241.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="246" cy="61.7" r="2.6" class="cone"/><line x1="246" y1="67.0" x2="246" y2="90"/><line x1="246" y1="90" x2="241" y2="96"/><line x1="246" y1="90" x2="251" y2="96"/></g></svg><figcaption>Or two 3m walls, one each side of the stage.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="1" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Large halls, fundraising dinners, weddings</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 6m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -833,7 +866,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Sound and screen</span>
         <h3>Sound + 3m LED wall</h3>
         <ul><li>Full PA sized to the room</li><li>3m × 2m LED wall</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip3"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip3" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="One 3 metre LED wall raised behind the stage, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="103.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="100.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="100.0" y1="54.0" x2="160.0" y2="54.0"/><line x1="100.0" y1="64.0" x2="160.0" y2="64.0"/><line x1="100.0" y1="74.0" x2="160.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">3m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g class="spk"><rect x="73.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="78" cy="61.7" r="2.6" class="cone"/><line x1="78" y1="67.0" x2="78" y2="90"/><line x1="78" y1="90" x2="73" y2="96"/><line x1="78" y1="90" x2="83" y2="96"/></g><g class="spk"><rect x="177.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="182" cy="61.7" r="2.6" class="cone"/><line x1="182" y1="67.0" x2="182" y2="90"/><line x1="182" y1="90" x2="177" y2="96"/><line x1="182" y1="90" x2="187" y2="96"/></g><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 3m wall raised behind the stage, a speaker each side.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="3" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Mid-size halls, conferences, prize-givings</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 3m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -841,7 +874,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Screen only</span>
         <h3>6m LED wall</h3>
         <ul><li>6m × 2m LED wall, or two 3m walls</li><li>Operated throughout</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip2"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip2" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="One 6 metre LED wall raised behind the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="73.0" y="84.0" width="114.0" height="12.0" class="rsr"/><rect x="70.0" y="44.0" width="120.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="90.0" y1="44.0" x2="90.0" y2="84.0"/><line x1="100.0" y1="44.0" x2="100.0" y2="84.0"/><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="160.0" y1="44.0" x2="160.0" y2="84.0"/><line x1="170.0" y1="44.0" x2="170.0" y2="84.0"/><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="70.0" y1="54.0" x2="190.0" y2="54.0"/><line x1="70.0" y1="64.0" x2="190.0" y2="64.0"/><line x1="70.0" y1="74.0" x2="190.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">6m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g transform="translate(248 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 6m wall raised behind the stage.</figcaption></figure><figure><svg viewBox="0 0 260 104" role="img" aria-label="Two 3 metre LED walls on risers, one each side of the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="33.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="30.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="40.0" y1="44.0" x2="40.0" y2="84.0"/><line x1="50.0" y1="44.0" x2="50.0" y2="84.0"/><line x1="60.0" y1="44.0" x2="60.0" y2="84.0"/><line x1="70.0" y1="44.0" x2="70.0" y2="84.0"/><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="30.0" y1="54.0" x2="90.0" y2="54.0"/><line x1="30.0" y1="64.0" x2="90.0" y2="64.0"/><line x1="30.0" y1="74.0" x2="90.0" y2="74.0"/></g><text x="60.0" y="39.0" text-anchor="middle">3m</text><rect x="173.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="170.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="190.0" y1="44.0" x2="190.0" y2="84.0"/><line x1="200.0" y1="44.0" x2="200.0" y2="84.0"/><line x1="210.0" y1="44.0" x2="210.0" y2="84.0"/><line x1="220.0" y1="44.0" x2="220.0" y2="84.0"/><line x1="170.0" y1="54.0" x2="230.0" y2="54.0"/><line x1="170.0" y1="64.0" x2="230.0" y2="64.0"/><line x1="170.0" y1="74.0" x2="230.0" y2="74.0"/></g><text x="200.0" y="39.0" text-anchor="middle">3m</text></svg><figcaption>Or two 3m walls, one each side.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="2" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Venues with their own sound</p>
         <a class="ask" href="#check-your-date" data-pkg="6m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -849,7 +882,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Sound and screen</span>
         <h3>Sound + 65" TVs</h3>
         <ul><li>Full PA sized to the room</li><li>Two 65" screens on stands</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip5"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip5" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="Two 65 inch TVs on stands on the stage, either side of the podium, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="78.0" y="88.0" width="104.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="81.6" y="51.8" width="28.8" height="16.2" rx="1.5" class="scr"/><rect x="94.8" y="68.0" width="2.4" height="20.0" class="leg"/><rect x="88" y="86.0" width="16" height="2" class="leg"/><text x="96.0" y="46.8" text-anchor="middle">65"</text><rect x="149.6" y="51.8" width="28.8" height="16.2" rx="1.5" class="scr"/><rect x="162.8" y="68.0" width="2.4" height="20.0" class="leg"/><rect x="156" y="86.0" width="16" height="2" class="leg"/><text x="164.0" y="46.8" text-anchor="middle">65"</text><g class="spk"><rect x="51.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="56" cy="61.7" r="2.6" class="cone"/><line x1="56" y1="67.0" x2="56" y2="90"/><line x1="56" y1="90" x2="51" y2="96"/><line x1="56" y1="90" x2="61" y2="96"/></g><g class="spk"><rect x="199.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="204" cy="61.7" r="2.6" class="cone"/><line x1="204" y1="67.0" x2="204" y2="90"/><line x1="204" y1="90" x2="199" y2="96"/><line x1="204" y1="90" x2="209" y2="96"/></g><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>Two 65" TVs on the stage, either side of the podium, a speaker each side.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="5" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Talks and smaller rooms</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + 65&quot; TVs">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -857,7 +890,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Sound and screen</span>
         <h3>Sound + projectors</h3>
         <ul><li>Full PA sized to the room</li><li>Two projectors and fast-fold screens</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip6"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip6" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="Two projector screens with front drapes, one each side of the stage, with a speaker at each end"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="98.0" y="88.0" width="64.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="40.0" y="53.0" width="48.0" height="27.0" class="psc"/><rect x="40.0" y="80.0" width="48.0" height="16.0" class="drp"/><g class="fold"><line x1="46.0" y1="80.0" x2="46.0" y2="96"/><line x1="52.0" y1="80.0" x2="52.0" y2="96"/><line x1="58.0" y1="80.0" x2="58.0" y2="96"/><line x1="64.0" y1="80.0" x2="64.0" y2="96"/><line x1="70.0" y1="80.0" x2="70.0" y2="96"/><line x1="76.0" y1="80.0" x2="76.0" y2="96"/><line x1="82.0" y1="80.0" x2="82.0" y2="96"/></g><text x="64.0" y="48.0" text-anchor="middle">Screen</text><rect x="172.0" y="53.0" width="48.0" height="27.0" class="psc"/><rect x="172.0" y="80.0" width="48.0" height="16.0" class="drp"/><g class="fold"><line x1="178.0" y1="80.0" x2="178.0" y2="96"/><line x1="184.0" y1="80.0" x2="184.0" y2="96"/><line x1="190.0" y1="80.0" x2="190.0" y2="96"/><line x1="196.0" y1="80.0" x2="196.0" y2="96"/><line x1="202.0" y1="80.0" x2="202.0" y2="96"/><line x1="208.0" y1="80.0" x2="208.0" y2="96"/><line x1="214.0" y1="80.0" x2="214.0" y2="96"/></g><text x="196.0" y="48.0" text-anchor="middle">Screen</text><g class="spk"><rect x="9.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="14" cy="61.7" r="2.6" class="cone"/><line x1="14" y1="67.0" x2="14" y2="90"/><line x1="14" y1="90" x2="9" y2="96"/><line x1="14" y1="90" x2="19" y2="96"/></g><g class="spk"><rect x="241.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="246" cy="61.7" r="2.6" class="cone"/><line x1="246" y1="67.0" x2="246" y2="90"/><line x1="246" y1="90" x2="241" y2="96"/><line x1="246" y1="90" x2="251" y2="96"/></g></svg><figcaption>Two projector screens, one each side, with a drape across the front.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="6" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Lectures and community rooms</p>
         <a class="ask" href="#check-your-date" data-pkg="Sound + projectors">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article><article class="pack">
@@ -865,7 +898,7 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
         <span class="label">Screen only</span>
         <h3>3m LED wall</h3>
         <ul><li>3m × 2m LED wall</li><li>Operated throughout</li><li>Two microphones</li></ul>
-        <div class="size"><button type="button" class="size-btn" aria-expanded="false" aria-controls="tip4"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button><div class="size-tip" id="tip4" role="tooltip" hidden><button type="button" class="tip-x" aria-label="Close">×</button><figure><svg viewBox="0 0 260 104" role="img" aria-label="One 3 metre LED wall raised behind the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="103.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="100.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="100.0" y1="54.0" x2="160.0" y2="54.0"/><line x1="100.0" y1="64.0" x2="160.0" y2="64.0"/><line x1="100.0" y1="74.0" x2="160.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">3m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 3m wall raised behind the stage.</figcaption></figure><p class="tip-note">Drawn to scale. We set it out to suit your room.</p></div></div>
+        <button type="button" class="size-btn" data-setup="4" aria-haspopup="dialog"><svg class="ic" aria-hidden="true"><use href="#i-ruler"/></svg>See the setup</button>
         <p class="suits"><b>Suits:</b> Venues with their own sound</p>
         <a class="ask" href="#check-your-date" data-pkg="3m LED wall">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
@@ -1093,6 +1126,28 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
   </div>
 </footer>
 
+<template id="setup1" data-name="Sound + 6m LED wall" data-suits="Large halls, fundraising dinners, weddings"><figure class="setup-fig" data-label="One 6m wall"><svg viewBox="0 0 260 104" role="img" aria-label="One 6 metre LED wall raised behind the stage, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="73.0" y="84.0" width="114.0" height="12.0" class="rsr"/><rect x="70.0" y="44.0" width="120.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="90.0" y1="44.0" x2="90.0" y2="84.0"/><line x1="100.0" y1="44.0" x2="100.0" y2="84.0"/><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="160.0" y1="44.0" x2="160.0" y2="84.0"/><line x1="170.0" y1="44.0" x2="170.0" y2="84.0"/><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="70.0" y1="54.0" x2="190.0" y2="54.0"/><line x1="70.0" y1="64.0" x2="190.0" y2="64.0"/><line x1="70.0" y1="74.0" x2="190.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">6m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g class="spk"><rect x="49.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="54" cy="61.7" r="2.6" class="cone"/><line x1="54" y1="67.0" x2="54" y2="90"/><line x1="54" y1="90" x2="49" y2="96"/><line x1="54" y1="90" x2="59" y2="96"/></g><g class="spk"><rect x="201.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="206" cy="61.7" r="2.6" class="cone"/><line x1="206" y1="67.0" x2="206" y2="90"/><line x1="206" y1="90" x2="201" y2="96"/><line x1="206" y1="90" x2="211" y2="96"/></g><g transform="translate(248 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 6m wall raised behind the stage, a speaker each side.</figcaption></figure><figure class="setup-fig" data-label="Two 3m walls"><svg viewBox="0 0 260 104" role="img" aria-label="Two 3 metre LED walls on risers, one each side of the stage, with a speaker at each end"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="33.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="30.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="40.0" y1="44.0" x2="40.0" y2="84.0"/><line x1="50.0" y1="44.0" x2="50.0" y2="84.0"/><line x1="60.0" y1="44.0" x2="60.0" y2="84.0"/><line x1="70.0" y1="44.0" x2="70.0" y2="84.0"/><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="30.0" y1="54.0" x2="90.0" y2="54.0"/><line x1="30.0" y1="64.0" x2="90.0" y2="64.0"/><line x1="30.0" y1="74.0" x2="90.0" y2="74.0"/></g><text x="60.0" y="39.0" text-anchor="middle">3m</text><rect x="173.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="170.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="190.0" y1="44.0" x2="190.0" y2="84.0"/><line x1="200.0" y1="44.0" x2="200.0" y2="84.0"/><line x1="210.0" y1="44.0" x2="210.0" y2="84.0"/><line x1="220.0" y1="44.0" x2="220.0" y2="84.0"/><line x1="170.0" y1="54.0" x2="230.0" y2="54.0"/><line x1="170.0" y1="64.0" x2="230.0" y2="64.0"/><line x1="170.0" y1="74.0" x2="230.0" y2="74.0"/></g><text x="200.0" y="39.0" text-anchor="middle">3m</text><g class="spk"><rect x="9.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="14" cy="61.7" r="2.6" class="cone"/><line x1="14" y1="67.0" x2="14" y2="90"/><line x1="14" y1="90" x2="9" y2="96"/><line x1="14" y1="90" x2="19" y2="96"/></g><g class="spk"><rect x="241.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="246" cy="61.7" r="2.6" class="cone"/><line x1="246" y1="67.0" x2="246" y2="90"/><line x1="246" y1="90" x2="241" y2="96"/><line x1="246" y1="90" x2="251" y2="96"/></g></svg><figcaption>Or two 3m walls, one each side of the stage.</figcaption></figure></template>
+<template id="setup3" data-name="Sound + 3m LED wall" data-suits="Mid-size halls, conferences, prize-givings"><figure class="setup-fig" data-label=""><svg viewBox="0 0 260 104" role="img" aria-label="One 3 metre LED wall raised behind the stage, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="103.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="100.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="100.0" y1="54.0" x2="160.0" y2="54.0"/><line x1="100.0" y1="64.0" x2="160.0" y2="64.0"/><line x1="100.0" y1="74.0" x2="160.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">3m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g class="spk"><rect x="73.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="78" cy="61.7" r="2.6" class="cone"/><line x1="78" y1="67.0" x2="78" y2="90"/><line x1="78" y1="90" x2="73" y2="96"/><line x1="78" y1="90" x2="83" y2="96"/></g><g class="spk"><rect x="177.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="182" cy="61.7" r="2.6" class="cone"/><line x1="182" y1="67.0" x2="182" y2="90"/><line x1="182" y1="90" x2="177" y2="96"/><line x1="182" y1="90" x2="187" y2="96"/></g><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 3m wall raised behind the stage, a speaker each side.</figcaption></figure></template>
+<template id="setup2" data-name="6m LED wall" data-suits="Venues with their own sound"><figure class="setup-fig" data-label="One 6m wall"><svg viewBox="0 0 260 104" role="img" aria-label="One 6 metre LED wall raised behind the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="73.0" y="84.0" width="114.0" height="12.0" class="rsr"/><rect x="70.0" y="44.0" width="120.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="90.0" y1="44.0" x2="90.0" y2="84.0"/><line x1="100.0" y1="44.0" x2="100.0" y2="84.0"/><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="160.0" y1="44.0" x2="160.0" y2="84.0"/><line x1="170.0" y1="44.0" x2="170.0" y2="84.0"/><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="70.0" y1="54.0" x2="190.0" y2="54.0"/><line x1="70.0" y1="64.0" x2="190.0" y2="64.0"/><line x1="70.0" y1="74.0" x2="190.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">6m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g transform="translate(248 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 6m wall raised behind the stage.</figcaption></figure><figure class="setup-fig" data-label="Two 3m walls"><svg viewBox="0 0 260 104" role="img" aria-label="Two 3 metre LED walls on risers, one each side of the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="33.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="30.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="40.0" y1="44.0" x2="40.0" y2="84.0"/><line x1="50.0" y1="44.0" x2="50.0" y2="84.0"/><line x1="60.0" y1="44.0" x2="60.0" y2="84.0"/><line x1="70.0" y1="44.0" x2="70.0" y2="84.0"/><line x1="80.0" y1="44.0" x2="80.0" y2="84.0"/><line x1="30.0" y1="54.0" x2="90.0" y2="54.0"/><line x1="30.0" y1="64.0" x2="90.0" y2="64.0"/><line x1="30.0" y1="74.0" x2="90.0" y2="74.0"/></g><text x="60.0" y="39.0" text-anchor="middle">3m</text><rect x="173.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="170.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="180.0" y1="44.0" x2="180.0" y2="84.0"/><line x1="190.0" y1="44.0" x2="190.0" y2="84.0"/><line x1="200.0" y1="44.0" x2="200.0" y2="84.0"/><line x1="210.0" y1="44.0" x2="210.0" y2="84.0"/><line x1="220.0" y1="44.0" x2="220.0" y2="84.0"/><line x1="170.0" y1="54.0" x2="230.0" y2="54.0"/><line x1="170.0" y1="64.0" x2="230.0" y2="64.0"/><line x1="170.0" y1="74.0" x2="230.0" y2="74.0"/></g><text x="200.0" y="39.0" text-anchor="middle">3m</text></svg><figcaption>Or two 3m walls, one each side.</figcaption></figure></template>
+<template id="setup5" data-name="Sound + 65&quot; TVs" data-suits="Talks and smaller rooms"><figure class="setup-fig" data-label=""><svg viewBox="0 0 260 104" role="img" aria-label="Two 65 inch TVs on stands on the stage, either side of the podium, with a speaker each side"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="78.0" y="88.0" width="104.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="81.6" y="51.8" width="28.8" height="16.2" rx="1.5" class="scr"/><rect x="94.8" y="68.0" width="2.4" height="20.0" class="leg"/><rect x="88" y="86.0" width="16" height="2" class="leg"/><text x="96.0" y="46.8" text-anchor="middle">65"</text><rect x="149.6" y="51.8" width="28.8" height="16.2" rx="1.5" class="scr"/><rect x="162.8" y="68.0" width="2.4" height="20.0" class="leg"/><rect x="156" y="86.0" width="16" height="2" class="leg"/><text x="164.0" y="46.8" text-anchor="middle">65"</text><g class="spk"><rect x="51.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="56" cy="61.7" r="2.6" class="cone"/><line x1="56" y1="67.0" x2="56" y2="90"/><line x1="56" y1="90" x2="51" y2="96"/><line x1="56" y1="90" x2="61" y2="96"/></g><g class="spk"><rect x="199.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="204" cy="61.7" r="2.6" class="cone"/><line x1="204" y1="67.0" x2="204" y2="90"/><line x1="204" y1="90" x2="199" y2="96"/><line x1="204" y1="90" x2="209" y2="96"/></g><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>Two 65" TVs on the stage, either side of the podium, a speaker each side.</figcaption></figure></template>
+<template id="setup6" data-name="Sound + projectors" data-suits="Lectures and community rooms"><figure class="setup-fig" data-label=""><svg viewBox="0 0 260 104" role="img" aria-label="Two projector screens with front drapes, one each side of the stage, with a speaker at each end"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="98.0" y="88.0" width="64.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><rect x="40.0" y="53.0" width="48.0" height="27.0" class="psc"/><rect x="40.0" y="80.0" width="48.0" height="16.0" class="drp"/><g class="fold"><line x1="46.0" y1="80.0" x2="46.0" y2="96"/><line x1="52.0" y1="80.0" x2="52.0" y2="96"/><line x1="58.0" y1="80.0" x2="58.0" y2="96"/><line x1="64.0" y1="80.0" x2="64.0" y2="96"/><line x1="70.0" y1="80.0" x2="70.0" y2="96"/><line x1="76.0" y1="80.0" x2="76.0" y2="96"/><line x1="82.0" y1="80.0" x2="82.0" y2="96"/></g><text x="64.0" y="48.0" text-anchor="middle">Screen</text><rect x="172.0" y="53.0" width="48.0" height="27.0" class="psc"/><rect x="172.0" y="80.0" width="48.0" height="16.0" class="drp"/><g class="fold"><line x1="178.0" y1="80.0" x2="178.0" y2="96"/><line x1="184.0" y1="80.0" x2="184.0" y2="96"/><line x1="190.0" y1="80.0" x2="190.0" y2="96"/><line x1="196.0" y1="80.0" x2="196.0" y2="96"/><line x1="202.0" y1="80.0" x2="202.0" y2="96"/><line x1="208.0" y1="80.0" x2="208.0" y2="96"/><line x1="214.0" y1="80.0" x2="214.0" y2="96"/></g><text x="196.0" y="48.0" text-anchor="middle">Screen</text><g class="spk"><rect x="9.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="14" cy="61.7" r="2.6" class="cone"/><line x1="14" y1="67.0" x2="14" y2="90"/><line x1="14" y1="90" x2="9" y2="96"/><line x1="14" y1="90" x2="19" y2="96"/></g><g class="spk"><rect x="241.5" y="53.0" width="9.0" height="14.0" rx="1.5"/><circle cx="246" cy="61.7" r="2.6" class="cone"/><line x1="246" y1="67.0" x2="246" y2="90"/><line x1="246" y1="90" x2="241" y2="96"/><line x1="246" y1="90" x2="251" y2="96"/></g></svg><figcaption>Two projector screens, one each side, with a drape across the front.</figcaption></figure></template>
+<template id="setup4" data-name="3m LED wall" data-suits="Venues with their own sound"><figure class="setup-fig" data-label=""><svg viewBox="0 0 260 104" role="img" aria-label="One 3 metre LED wall raised behind the stage"><line x1="2" y1="96" x2="258" y2="96" class="fl"/><rect x="103.0" y="84.0" width="54.0" height="12.0" class="rsr"/><rect x="100.0" y="44.0" width="60.0" height="40.0" rx="1.5" class="scr"/><g class="sm"><line x1="110.0" y1="44.0" x2="110.0" y2="84.0"/><line x1="120.0" y1="44.0" x2="120.0" y2="84.0"/><line x1="130.0" y1="44.0" x2="130.0" y2="84.0"/><line x1="140.0" y1="44.0" x2="140.0" y2="84.0"/><line x1="150.0" y1="44.0" x2="150.0" y2="84.0"/><line x1="100.0" y1="54.0" x2="160.0" y2="54.0"/><line x1="100.0" y1="64.0" x2="160.0" y2="64.0"/><line x1="100.0" y1="74.0" x2="160.0" y2="74.0"/></g><text x="130.0" y="39.0" text-anchor="middle">3m</text><rect x="86.0" y="88.0" width="88.0" height="8.0" class="stg"/><rect x="125" y="65.0" width="10" height="23.0" rx="1" class="pod"/><g transform="translate(230 96) scale(0.3273) translate(0 -110)" class="per"><circle cx="0" cy="10" r="10"/><path d="M-13 24h26l-3 40h-5l-2 46h-5l-1-40l-1 40h-5l-2-46h-5z"/></g></svg><figcaption>One 3m wall raised behind the stage.</figcaption></figure></template>
+<dialog class="setup-modal" id="setupModal" aria-labelledby="setupTitle">
+  <div class="sm-card">
+    <button type="button" class="sm-close" id="smClose" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <p class="eyebrow">See the setup</p>
+    <h3 id="setupTitle">Sound + 6m LED wall</h3>
+    <p class="sm-suits" id="smSuits"></p>
+    <div class="sm-toggle" id="smToggle" role="group" aria-label="Layout" hidden></div>
+    <div class="sm-stage" id="smStage"></div>
+    <p class="sm-note"><i aria-hidden="true"></i>Drawn to scale. We set it out to suit your room.</p>
+    <div class="sm-actions">
+      <button type="button" class="btn btn-primary" id="smAsk">Ask about this package <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <button type="button" class="btn sm-done" id="smDone">Close</button>
+    </div>
+  </div>
+</dialog>
+
 <div class="sticky-cta">
   <a class="btn btn-primary" href="#check-your-date">Check a date</a>
   <a class="btn btn-outline wa-link" href="#"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
@@ -1125,28 +1180,45 @@ footer{background:var(--deep);padding-block:56px 40px;font-size:.92rem;color:var
     if (a.textContent.trim().indexOf("[") === 0) a.textContent = WHATSAPP_DISPLAY;
   });
 
-  /* Package size tooltips */
-  var tipBtns = document.querySelectorAll(".size-btn");
-  function closeTips(except){ tipBtns.forEach(function(b){ if (b !== except){ b.setAttribute("aria-expanded","false"); document.getElementById(b.getAttribute("aria-controls")).hidden = true; } }); }
-  tipBtns.forEach(function(b){
-    var tip = document.getElementById(b.getAttribute("aria-controls"));
-    var shownAt = 0;
-    function show(){ closeTips(b); tip.hidden = false; b.setAttribute("aria-expanded","true"); shownAt = Date.now(); }
-    function hide(){ tip.hidden = true; b.setAttribute("aria-expanded","false"); }
-    tip.querySelector(".tip-x").addEventListener("click", function(e){ e.stopPropagation(); hide(); b.focus(); });
-    tip.addEventListener("click", function(e){ e.stopPropagation(); });
-    b.addEventListener("click", function(e){
-      e.stopPropagation();
-      if (!tip.hidden && Date.now() - shownAt < 500) return; /* opened by hover a moment ago: keep it open */
-      tip.hidden ? show() : hide();
-    });
-    if (window.matchMedia("(hover: hover)").matches){
-      b.parentNode.addEventListener("mouseenter", show);
-      b.parentNode.addEventListener("mouseleave", hide);
-    }
+  /* Package setup popup */
+  var modal = document.getElementById("setupModal"), smStage = document.getElementById("smStage"),
+      smToggle = document.getElementById("smToggle"), lastBtn = null, activeCard = null;
+  function showLayout(i){
+    smStage.querySelectorAll(".setup-fig").forEach(function(f, k){ f.hidden = k !== i; });
+    smToggle.querySelectorAll("button").forEach(function(t, k){ t.setAttribute("aria-pressed", k === i); });
+  }
+  function openSetup(btn){
+    var tpl = document.getElementById("setup" + btn.getAttribute("data-setup"));
+    lastBtn = btn; activeCard = btn.closest(".pack");
+    document.getElementById("setupTitle").textContent = tpl.getAttribute("data-name");
+    document.getElementById("smSuits").textContent = "Suits " + tpl.getAttribute("data-suits").replace(/^./, function(c){ return c.toLowerCase(); }) + ".";
+    smStage.innerHTML = ""; smStage.appendChild(tpl.content.cloneNode(true));
+    var figs = smStage.querySelectorAll(".setup-fig");
+    smToggle.innerHTML = "";
+    if (figs.length > 1){
+      figs.forEach(function(f, k){
+        var t = document.createElement("button"); t.type = "button"; t.textContent = f.getAttribute("data-label") || ("Layout " + (k + 1));
+        t.addEventListener("click", function(){ showLayout(k); });
+        smToggle.appendChild(t);
+      });
+      smToggle.hidden = false;
+    } else { smToggle.hidden = true; }
+    showLayout(0);
+    document.documentElement.classList.add("modal-open");
+    if (typeof modal.showModal === "function") modal.showModal(); else modal.setAttribute("open", "");
+  }
+  function closeSetup(){ if (modal.open){ if (typeof modal.close === "function") modal.close(); else { modal.removeAttribute("open"); onClosed(); } } }
+  function onClosed(){ document.documentElement.classList.remove("modal-open"); if (lastBtn) lastBtn.focus(); }
+  modal.addEventListener("close", onClosed);
+  modal.addEventListener("click", function(e){ if (e.target === modal) closeSetup(); });
+  document.getElementById("smClose").addEventListener("click", closeSetup);
+  document.getElementById("smDone").addEventListener("click", closeSetup);
+  document.getElementById("smAsk").addEventListener("click", function(){
+    var ask = activeCard && activeCard.querySelector(".ask");
+    closeSetup();
+    if (ask) ask.click();
   });
-  document.addEventListener("click", function(){ closeTips(null); });
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeTips(null); });
+  document.querySelectorAll(".size-btn").forEach(function(b){ b.addEventListener("click", function(){ openSetup(b); }); });
 
   /* Package buttons fill the enquiry */
   document.querySelectorAll(".ask[data-pkg]").forEach(function(a){
