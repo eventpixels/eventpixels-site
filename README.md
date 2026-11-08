@@ -42,5 +42,4 @@ The full brand pack (colours, type, icons, the website compositions in section 1
 
 ## Still to fill in
 
-- Company number in the footer (search for `Company number`).
 - Hero photo: replace with a wide shot of a real event when one is available.
